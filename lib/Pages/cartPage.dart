@@ -23,6 +23,8 @@ class _CartPageState extends State<CartPage> {
   // Make sure your device and computer are on the same Wi-Fi network.
   //final String serverIp = '192.168.1.136';
 
+  final String serverUrl = 'https://e-commerce-backhand.onrender.com';
+
   @override
   void initState() {
     super.initState();
@@ -49,7 +51,7 @@ class _CartPageState extends State<CartPage> {
     print("Sending Signature: ${response.signature}");
 
     try {
-      final uri = Uri.parse('https://e-commerce-backhand.onrender.com/create-order');
+      final uri = Uri.parse('$serverUrl/verify-signature');
       final serverResponse = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
