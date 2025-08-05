@@ -1,3 +1,4 @@
+import 'package:e_commerce/Pages/shopPage.dart';
 import 'package:e_commerce/components/MyDrawer.dart';
 import 'package:e_commerce/models/products.dart';
 import 'package:e_commerce/models/shopModel.dart';
@@ -66,6 +67,9 @@ class _CartPageState extends State<CartPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("PAYMENT SUCCESSFUL AND VERIFIED.")),
         );
+
+        context.read<shopModel>().clearCart();
+
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -214,7 +218,9 @@ class _CartPageState extends State<CartPage> {
               },
             ),
           ),
-          ElevatedButton(
+
+          cart.isNotEmpty
+          ?ElevatedButton(
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
               backgroundColor: Colors.grey[700],
@@ -227,8 +233,26 @@ class _CartPageState extends State<CartPage> {
               'PAY NOW',
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
             ),
+          )
+
+          :ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              backgroundColor: Colors.grey[700],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ShopPage()));
+            },
+            child: const Text(
+              'SHOP NOW',
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+            ),
           ),
-          const SizedBox(height: 50),
+
+          SizedBox(height: 50),
         ],
       ),
       drawer: MyDrawer(),
