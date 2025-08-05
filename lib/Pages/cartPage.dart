@@ -43,8 +43,13 @@ class _CartPageState extends State<CartPage> {
       const SnackBar(content: Text('Verifying Payment...')),
     );
 
+    print("--- Sending Data for Verification ---");
+    print("Sending Order ID: ${response.orderId}");
+    print("Sending Payment ID: ${response.paymentId}");
+    print("Sending Signature: ${response.signature}");
+
     try {
-      final uri = Uri.parse('https://e-commerce-backhand.onrender.com');
+      final uri = Uri.parse('https://e-commerce-backhand.onrender.com/create-order');
       final serverResponse = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
@@ -128,7 +133,7 @@ class _CartPageState extends State<CartPage> {
       // FIX 1: ADDED THE "http://" SCHEME TO THE URI.
       // The error "no host specified" happens when the scheme (like http://) is missing.
       final response = await http.post(
-        Uri.parse("https://e-commerce-backhand.onrender.com"),
+        Uri.parse("https://e-commerce-backhand.onrender.com/create-order"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({"amount": totalAmount}),
       );
