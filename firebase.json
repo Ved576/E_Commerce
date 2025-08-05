@@ -1,0 +1,41 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "e-commerce-b3875",
+          "appId": "1:238531004197:android:dc6dbc17789f2e24d9fccc",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "e-commerce-b3875",
+          "configurations": {
+            "android": "1:238531004197:android:dc6dbc17789f2e24d9fccc",
+            "ios": "1:238531004197:ios:6e44f255465879f5d9fccc",
+            "macos": "1:238531004197:ios:6e44f255465879f5d9fccc",
+            "web": "1:238531004197:web:cc74c1f0608f6aa5d9fccc",
+            "windows": "1:238531004197:web:2b605aa5aad7abf9d9fccc"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}
