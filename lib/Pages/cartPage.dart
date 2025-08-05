@@ -21,7 +21,7 @@ class _CartPageState extends State<CartPage> {
   // For Android Emulator, use '10.0.2.2'.
   // For a physical device, use your computer's local IP address (e.g., '192.168.1.136').
   // Make sure your device and computer are on the same Wi-Fi network.
-  final String serverIp = '192.168.1.136';
+  //final String serverIp = '192.168.1.136';
 
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _CartPageState extends State<CartPage> {
     );
 
     try {
-      final uri = Uri.parse('http://$serverIp:5000/verify-signature');
+      final uri = Uri.parse('https://e-commerce-backhand.onrender.com');
       final serverResponse = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
@@ -128,7 +128,7 @@ class _CartPageState extends State<CartPage> {
       // FIX 1: ADDED THE "http://" SCHEME TO THE URI.
       // The error "no host specified" happens when the scheme (like http://) is missing.
       final response = await http.post(
-        Uri.parse("http://$serverIp:5000/create-order"),
+        Uri.parse("https://e-commerce-backhand.onrender.com"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({"amount": totalAmount}),
       );
